@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tinamark | Reliable Procurement & Supply Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: #ffffff; 
+      color: #1e293b; 
+      line-height: 1.5;
+      padding-top: 80px;
+    }
+
+    header { 
+      background: white; 
+      position: absolute; 
+      top: 0; 
+      left: 0;
+      width: 100%;
+      z-index: 100; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 0.5rem 0;
+    }
+    .nav-bar { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap; 
+      gap: 1rem; 
+      padding: 0.5rem 0;
+    }
+
+    .logo-area { 
+      display: flex; 
+      align-items: center; 
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+    .logo-spot { 
+      width: 50px; 
+      height: 50px; 
+      background: transparent; 
+      border-radius: 12px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      overflow: hidden; 
+    }
+    .logo-spot img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain; 
+    }
+    .logo-text h1 { 
+      font-size: 1.5rem; 
+      font-weight: 700; 
+      color: #0f172a; 
+      margin: 0;
+      line-height: 1.2;
+    }
+    .logo-text p { 
+      font-size: 0.7rem; 
+      color: #64748b; 
+      margin: 0;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: #0f172a;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      height: 100vh;
+      background: #0f172a;
+      padding: 2rem 1.5rem;
+      transition: right 0.3s ease;
+      z-index: 150;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+      overflow-y: auto;
+    }
+    .side-menu.open { right: 0; }
+
+    .side-menu .close-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 2rem;
+      cursor: pointer;
+      float: right;
+      transition: 0.2s;
+    }
+    .side-menu .close-btn:hover { color: white; }
+
+    .side-menu .logo-area-side {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .side-menu .logo-area-side h2 {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .side-menu .logo-area-side p {
+      color: #64748b;
+      font-size: 0.7rem;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+    .side-menu ul li {
+      margin-bottom: 0.5rem;
+    }
+    .side-menu ul li a {
+      display: block;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.8rem 1rem;
+      border-radius: 0.8rem;
+      transition: 0.2s;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .side-menu ul li a:hover {
+      background: rgba(37,99,235,0.2);
+      color: #60a5fa;
+    }
+    .side-menu ul li a i {
+      margin-right: 0.8rem;
+      width: 20px;
+      color: #60a5fa;
+    }
+
+    .side-menu .side-footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+    .side-menu .side-footer .contact-info {
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+    }
+    .side-menu .side-footer .contact-info i {
+      color: #60a5fa;
+      width: 20px;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 140;
+    }
+    .menu-overlay.active { display: block; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #334155; transition: 0.2s; cursor: pointer; }
+    .nav-links a:hover { color: #2563eb; }
+
+    .page { display: none; }
+    .page.active-page { display: block; }
+
+    .btn-primary { background: #2563eb; color: white; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; border: none; cursor: pointer; transition: 0.2s; }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1px solid #2563eb; color: #2563eb; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; cursor: pointer; transition: 0.2s; }
+    .btn-outline:hover { background: #eef2ff; }
+    .btn-download { background: #10b981; color: white; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: 0.2s; }
+    .btn-download:hover { background: #059669; transform: translateY(-2px); }
+    .btn-whatsapp { background: #25D366; color: white; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; border: none; cursor: pointer; transition: 0.2s; }
+    .btn-whatsapp:hover { background: #128C7E; transform: translateY(-2px); }
+
+    .section { padding: 4rem 0; }
+    .section-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; color: #0f172a; text-align: center; }
+    .section-title span { color: #2563eb; }
+    .section-subtitle { text-align: center; color: #64748b; margin-bottom: 2rem; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+
+    .card { background: #f8fafc; padding: 1.8rem; border-radius: 1rem; transition: 0.3s; text-align: center; }
+    .card:hover { background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9rem; color: #64748b; }
+
+    .picture-slot { 
+      background: #f1f5f9; 
+      border-radius: 1rem; 
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      overflow: hidden; 
+      margin-bottom: 1rem; 
+      border: 1px solid #e2e8f0; 
+    }
+    .picture-slot img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+    }
+
+    .card-picture-slot {
+      background: #f1f5f9;
+      border-radius: 1rem;
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid #e2e8f0;
+    }
+    .card-picture-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .industry-picture-slot {
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
+      background: #f1f5f9;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid #e2e8f0;
+    }
+    .industry-picture-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-slot {
+      background: #f1f5f9;
+      border-radius: 0.8rem;
+      aspect-ratio: 1 / 1.414;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .gallery-slot:hover {
+      border-color: #2563eb;
+      transform: scale(1.02);
+    }
+    .gallery-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .capability-card {
+      background: #f8fafc;
+      padding: 1.8rem;
+      border-radius: 1rem;
+      transition: 0.3s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .capability-card:hover {
+      background: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+    .capability-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .capability-card p {
+      font-size: 0.9rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .capability-card h3, 
+    .capability-card p {
+      text-align: center;
+      width: 100%;
+    }
+
+    .company-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    .info-card { background: #f8fafc; padding: 1.5rem; border-radius: 1rem; transition: 0.2s; }
+    .info-card:hover { background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .info-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #0f172a; border-left: 3px solid #2563eb; padding-left: 0.75rem; }
+    .info-detail { margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .info-detail i { color: #2563eb; width: 1.5rem; margin-top: 0.2rem; }
+    .info-detail strong { font-weight: 600; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .value-item { text-align: center; padding: 0.8rem; background: #eef2ff; border-radius: 0.8rem; }
+    .value-item i { font-size: 1.2rem; color: #2563eb; margin-bottom: 0.3rem; }
+    .value-item span { font-size: 0.75rem; font-weight: 500; }
+
+    .reviews-container { background: #f8fafc; border-radius: 1rem; padding: 2rem; }
+    .review-form { background: white; padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem; }
+    .rating-select { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .star-rating { font-size: 1.5rem; cursor: pointer; color: #cbd5e1; transition: 0.2s; }
+    .star-rating:hover, .star-rating.active { color: #f5b042; }
+    .review-card { background: white; padding: 1.2rem; border-radius: 1rem; margin-bottom: 1rem; border: 1px solid #e2e8f0; }
+    .review-name { font-weight: 700; margin-bottom: 0.3rem; }
+    .review-stars { color: #f5b042; margin-bottom: 0.5rem; }
+    .review-text { color: #475569; font-size: 0.9rem; }
+    .review-date { font-size: 0.7rem; color: #94a3b8; margin-top: 0.5rem; }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+      transition: 0.3s;
+      border-left: 4px solid #2563eb;
+    }
+    .process-step:hover {
+      background: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transform: translateX(5px);
+    }
+    .process-step .step-number {
+      background: #2563eb;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .process-step .step-content h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .process-step .step-content p {
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+    .process-step .step-content .example {
+      background: #eef2ff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 0.8rem;
+      font-style: italic;
+      color: #2563eb;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .process-step .step-content .example i {
+      margin-right: 0.5rem;
+    }
+    .process-step .step-content .why {
+      color: #10b981;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .process-step .step-content .why i {
+      margin-right: 0.5rem;
+    }
+    .process-step:last-child {
+      border-left-color: #10b981;
+    }
+    .process-step:last-child .step-number {
+      background: #10b981;
+    }
+
+    .catalogue-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      text-align: center;
+      color: white;
+      margin-top: 3rem;
+    }
+    .catalogue-section h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .catalogue-section h2 span {
+      color: #60a5fa;
+    }
+    .catalogue-section p {
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+    .catalogue-section .btn-download {
+      background: #10b981;
+      color: white;
+      padding: 0.8rem 2.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: 0.2s;
+    }
+    .catalogue-section .btn-download:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+
+    .industries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .industry-card { background: #f8fafc; border-radius: 1rem; padding: 1.5rem; transition: 0.3s; border: 1px solid #e2e8f0; }
+    .industry-card:hover { background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .industry-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .industry-description { font-style: italic; color: #475569; line-height: 1.6; margin-bottom: 1rem; font-size: 0.9rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
+
+    .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 2000;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px; }
+    .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .lightbox-close:hover { color: #f5b042; }
+
+    .contact-section { background: #f8fafc; border-radius: 1rem; }
+    .contact-grid { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .contact-info, .contact-form { flex: 1; background: white; padding: 2rem; border-radius: 1rem; }
+    .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .contact-detail i { width: 1.8rem; color: #2563eb; }
+    input, textarea { width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 0.8rem; margin-bottom: 1rem; font-family: inherit; }
+
+    .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; background: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: 0.3s; z-index: 1000; }
+    .whatsapp-float:hover { transform: scale(1.05); background: #128C7E; }
+
+    .info-strip { background: #2563eb; color: white; padding: 1rem 0; text-align: center; }
+    footer { background: #0f172a; color: #94a3b8; padding: 2rem 0; text-align: center; }
+
+    .expertise-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .expertise-modal.active {
+      display: flex;
+    }
+    .expertise-modal .modal-content {
+      background: white;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .expertise-modal .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #94a3b8;
+      transition: 0.2s;
+      background: none;
+      border: none;
+    }
+    .expertise-modal .modal-close:hover {
+      color: #0f172a;
+    }
+    .expertise-modal .modal-icon {
+      font-size: 3rem;
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+    }
+    .expertise-modal h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .expertise-modal .modal-subtitle {
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .expertise-modal p {
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .expertise-modal ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .expertise-modal ul li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #334155;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .expertise-modal ul li:last-child {
+      border-bottom: none;
+    }
+    .expertise-modal ul li i {
+      color: #2563eb;
+      width: 20px;
+    }
+    .expertise-modal .modal-cta {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .section-divider {
+      text-align: center;
+      margin: 3rem 0;
+      position: relative;
+    }
+    .section-divider span {
+      background: white;
+      padding: 0 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2563eb;
+      position: relative;
+      z-index: 1;
+    }
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #e2e8f0;
+      z-index: 0;
+    }
+
+    .fp-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+    }
+
+    #reviewMessage {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+    #reviewMessage.success { 
+      color: #1f6e43; 
+      background: #e6f7ed;
+    }
+    #reviewMessage.error { 
+      color: #c25a2a; 
+      background: #fde8e8;
+    }
+    #reviewMessage.loading { 
+      color: #2563eb; 
+      background: #e8effd;
+    }
+
+    /* Seritoclox Logo Styles */
+    .seritoclox-section {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem 0 0.5rem 0;
+    }
+    .seritoclox-logo-container {
+      background: #f8fafc;
+      border-radius: 1rem;
+      padding: 0.8rem 1.5rem 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid #e2e8f0;
+      transition: 0.3s;
+      max-width: 320px;
+    }
+    .seritoclox-logo-container:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-color: #2563eb;
+    }
+    .seritoclox-logo-container .logo-slot {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+    }
+    .seritoclox-logo-container .logo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+    .seritoclox-logo-container .logo-text-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .seritoclox-logo-container .trading-division {
+      font-size: 0.55rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+    .seritoclox-logo-container .brand-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+    .seritoclox-logo-container .brand-name span {
+      color: #2563eb;
+    }
+    .seritoclox-logo-container .tagline {
+      font-size: 0.6rem;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+    }
+
+    @media (max-width: 1199px) {
+      .container {
+        padding: 0 2rem;
+      }
+      .hero-grid .hero-image {
+        height: 400px !important;
+      }
+      .hero-grid .hero-text h1 {
+        font-size: 2.5rem !important;
+      }
+      .industries-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+      }
+      .company-info-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2rem !important;
+        padding: 2rem 0 !important;
+        min-height: auto !important;
+      }
+      .hero-grid .hero-image {
+        height: 300px !important;
+      }
+      .hero-grid .hero-text h1 {
+        font-size: 2rem !important;
+      }
+      .hero-grid .hero-text p {
+        font-size: 0.9rem !important;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.8rem !important;
+      }
+      .industries-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.2rem !important;
+      }
+      .company-info-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.2rem !important;
+      }
+      .process-step {
+        grid-template-columns: 70px 1fr !important;
+        gap: 1.5rem !important;
+        padding: 1.5rem !important;
+      }
+      .process-step .step-number {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.2rem !important;
+      }
+      .fp-iframe {
+        height: 400px !important;
+      }
+      .seritoclox-logo-container {
+        padding: 0.6rem 1rem 0.6rem 0.8rem !important;
+        max-width: 260px !important;
+      }
+      .seritoclox-logo-container .logo-slot {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .seritoclox-logo-container .brand-name {
+        font-size: 0.85rem !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .container {
+        padding: 0 1rem;
+      }
+      body {
+        padding-top: 70px !important;
+      }
+      .logo-text h1 {
+        font-size: 1.2rem !important;
+      }
+      .logo-spot {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.2rem !important;
+        padding: 1.5rem 0 !important;
+      }
+      .hero-grid .hero-image {
+        height: 200px !important;
+        border-radius: 1rem !important;
+      }
+      .hero-grid .hero-text h1 {
+        font-size: 1.4rem !important;
+      }
+      .hero-grid .hero-text h1 br {
+        display: none !important;
+      }
+      .hero-grid .hero-text p {
+        font-size: 0.75rem !important;
+        margin: 0.5rem 0 !important;
+      }
+      .hero-grid .hero-text .btn-primary {
+        padding: 0.4rem 1rem !important;
+        font-size: 0.7rem !important;
+        border-radius: 30px !important;
+      }
+      .section {
+        padding: 2.5rem 0 !important;
+      }
+      .section-title {
+        font-size: 1.4rem !important;
+        margin-bottom: 1.2rem !important;
+      }
+      .section-subtitle {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+      .card {
+        padding: 1.2rem !important;
+      }
+      .card h3 {
+        font-size: 1rem !important;
+      }
+      .card p {
+        font-size: 0.8rem !important;
+      }
+      .picture-slot {
+        height: 200px !important;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.6rem !important;
+      }
+      .industries-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+      .industry-card {
+        padding: 1rem !important;
+      }
+      .industry-card h3 {
+        font-size: 1rem !important;
+      }
+      .industry-description {
+        font-size: 0.8rem !important;
+      }
+      .industry-picture-slot {
+        height: 200px !important;
+      }
+      .company-info-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+      .info-card {
+        padding: 1.2rem !important;
+      }
+      .info-card h3 {
+        font-size: 1rem !important;
+      }
+      .process-step {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        padding: 1.2rem !important;
+        gap: 0.8rem !important;
+      }
+      .process-step .step-number {
+        margin: 0 auto !important;
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1rem !important;
+      }
+      .process-step .step-content h3 {
+        font-size: 1rem !important;
+      }
+      .process-step .step-content p {
+        font-size: 0.8rem !important;
+      }
+      .process-step .step-content .example {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.8rem !important;
+      }
+      .process-step .step-content .why {
+        font-size: 0.75rem !important;
+      }
+      .contact-grid {
+        flex-direction: column !important;
+      }
+      .contact-info, .contact-form {
+        padding: 1.2rem !important;
+      }
+      .contact-info h3 {
+        font-size: 1rem !important;
+      }
+      .contact-detail {
+        font-size: 0.85rem !important;
+      }
+      input, textarea {
+        padding: 0.6rem !important;
+        font-size: 0.85rem !important;
+      }
+      .reviews-container {
+        padding: 1rem !important;
+      }
+      .review-form {
+        padding: 1rem !important;
+      }
+      .review-card {
+        padding: 0.8rem !important;
+      }
+      .review-name {
+        font-size: 0.9rem !important;
+      }
+      .review-text {
+        font-size: 0.8rem !important;
+      }
+      .catalogue-section {
+        padding: 2rem 1rem !important;
+      }
+      .catalogue-section h2 {
+        font-size: 1.3rem !important;
+      }
+      .catalogue-section p {
+        font-size: 0.85rem !important;
+      }
+      .catalogue-section .btn-download {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.8rem !important;
+      }
+      .fp-iframe {
+        height: 300px !important;
+      }
+      .side-menu {
+        width: 85% !important;
+        right: -85% !important;
+        padding: 1.5rem !important;
+      }
+      .side-menu.open {
+        right: 0 !important;
+      }
+      .btn-primary, .btn-outline, .btn-download, .btn-whatsapp {
+        padding: 0.5rem 1.2rem !important;
+        font-size: 0.8rem !important;
+      }
+      .info-strip .container {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+      }
+      .info-strip span {
+        font-size: 0.7rem !important;
+      }
+      footer p {
+        font-size: 0.7rem !important;
+      }
+      .section-divider span {
+        font-size: 1rem !important;
+        padding: 0 0.8rem !important;
+      }
+      .expertise-modal .modal-content {
+        padding: 1.2rem !important;
+        margin: 0.8rem !important;
+        max-width: 95% !important;
+      }
+      .expertise-modal h2 {
+        font-size: 1.3rem !important;
+      }
+      .expertise-modal .modal-cta {
+        flex-direction: column !important;
+      }
+      .expertise-modal .modal-cta .btn-primary,
+      .expertise-modal .modal-cta .btn-outline {
+        width: 100% !important;
+        text-align: center !important;
+      }
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+      }
+      .value-item {
+        padding: 0.5rem !important;
+      }
+      .value-item i {
+        font-size: 1rem !important;
+      }
+      .value-item span {
+        font-size: 0.65rem !important;
+      }
+      .value-item small {
+        font-size: 0.55rem !important;
+      }
+      .seritoclox-section {
+        justify-content: center !important;
+      }
+      .seritoclox-logo-container {
+        padding: 0.5rem 0.8rem 0.5rem 0.6rem !important;
+        max-width: 100% !important;
+        flex: 1 !important;
+      }
+      .seritoclox-logo-container .logo-slot {
+        width: 35px !important;
+        height: 35px !important;
+      }
+      .seritoclox-logo-container .brand-name {
+        font-size: 0.75rem !important;
+      }
+      .seritoclox-logo-container .tagline {
+        font-size: 0.5rem !important;
+      }
+      .seritoclox-logo-container .trading-division {
+        font-size: 0.45rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.8rem;
+      }
+      .hero-grid {
+        gap: 0.8rem !important;
+        padding: 1rem 0 !important;
+      }
+      .hero-grid .hero-image {
+        height: 150px !important;
+      }
+      .hero-grid .hero-text h1 {
+        font-size: 1.1rem !important;
+      }
+      .hero-grid .hero-text p {
+        font-size: 0.65rem !important;
+        margin: 0.3rem 0 !important;
+      }
+      .hero-grid .hero-text .btn-primary {
+        padding: 0.3rem 0.8rem !important;
+        font-size: 0.6rem !important;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.4rem !important;
+      }
+      .fp-iframe {
+        height: 250px !important;
+      }
+      .section-title {
+        font-size: 1.2rem !important;
+      }
+      .picture-slot {
+        height: 160px !important;
+      }
+      .industry-picture-slot {
+        height: 160px !important;
+      }
+      .side-menu {
+        width: 100% !important;
+        right: -100% !important;
+        padding: 1rem !important;
+      }
+      .side-menu.open {
+        right: 0 !important;
+      }
+      .side-menu ul li a {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 0.8rem !important;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .hamburger { display: none !important; }
+      .nav-links { display: flex !important; }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex !important; }
+      .nav-links { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="https://wa.me/27784908745" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- EXPERTISE MODAL -->
+  <div class="expertise-modal" id="expertiseModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeExpertiseModal()">&times;</button>
+      <div class="modal-icon" id="modalIcon"><i class="fas fa-hard-hat"></i></div>
+      <h2 id="modalTitle">PPE &amp; Workwear</h2>
+      <div class="modal-subtitle" id="modalSubtitle">Head to toe protection for any worksite</div>
+      <div id="modalDescription">
+        <p>We source high quality Personal Protective Equipment (PPE) and workwear for businesses across all industries. From construction sites to mining operations, we ensure your workforce is protected with certified, durable safety equipment.</p>
+        <p>Our supplier network gives you access to premium brands at competitive prices, delivered when and where you need them.</p>
+      </div>
+      <ul id="modalList">
+        <li><i class="fas fa-check-circle"></i> Hard hats &amp; safety helmets</li>
+        <li><i class="fas fa-check-circle"></i> High visibility vests &amp; clothing</li>
+        <li><i class="fas fa-check-circle"></i> Safety boots &amp; footwear</li>
+        <li><i class="fas fa-check-circle"></i> Gloves (all types)</li>
+        <li><i class="fas fa-check-circle"></i> Safety glasses &amp; goggles</li>
+        <li><i class="fas fa-check-circle"></i> Hearing protection</li>
+        <li><i class="fas fa-check-circle"></i> Respiratory protection</li>
+        <li><i class="fas fa-check-circle"></i> Fall protection &amp; harnesses</li>
+        <li><i class="fas fa-check-circle"></i> Workwear &amp; uniforms</li>
+      </ul>
+      <div class="modal-cta">
+        <a onclick="document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth' }); closeExpertiseModal();" class="btn-primary">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
+  <!-- SIDE MENU -->
+  <div class="side-menu" id="sideMenu">
+    <button class="close-btn" onclick="closeMenu()">&times;</button>
+    <div class="logo-area-side">
+      <h2>Tinamark</h2>
+      <p>We Source | We Supply | We Deliver</p>
+    </div>
+    <ul>
+      <li><a onclick="showPage('home'); closeMenu();"><i class="fas fa-home"></i> Home</a></li>
+      <li><a onclick="showPage('whatwedo'); closeMenu();"><i class="fas fa-concierge-bell"></i> What We Do</a></li>
+      <li><a onclick="showPage('howwework'); closeMenu();"><i class="fas fa-cogs"></i> How We Work</a></li>
+      <li><a onclick="showPage('gallery'); closeMenu();"><i class="fas fa-/images"></i> Gallery</a></li>
+    </ul>
+    <div class="side-footer">
+      <div class="contact-info"><i class="fas fa-phone"></i> 078 490 8745</div>
+      <div class="contact-info"><i class="fas fa-envelope"></i> tinamarksourcing@yahoo.com</div>
+      <div style="margin-top: 1rem; font-size: 0.7rem; color: #475569;">© 2026 Tinamark (Pty) Ltd</div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-bar">
+      <div class="logo-area">
+        <div class="logo-spot" id="logoSpot">
+          <img src="/images/TinaMark45.jpeg" alt="Tinamark Logo">
+        </div>
+        <div class="logo-text">
+          <h1>Tinamark</h1>
+          <p>We Source | We Supply | We Deliver</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('whatwedo')">What We Do</a></li>
+        <li><a onclick="showPage('howwework')">How We Work</a></li>
+        <li><a onclick="showPage('gallery')">Gallery</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME PAGE -->
+    <div id="home" class="page active-page">
+      
+      <!-- HERO -->
+      <div style="background: #0f172a; padding: 0;">
+        <div class="container hero-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 500px; padding: 3rem 0;">
+          <div class="hero-text" style="color: white;">
+            <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.1;">
+              SMARTER PROCUREMENT.<br>
+              <span style="color: #60a5fa;">SEAMLESS SOLUTIONS.</span>
+            </h1>
+            <p style="color: #cbd5e1; max-width: 500px; margin: 1.5rem 0; font-size: 1.05rem; line-height: 1.7;">
+              Tinamark is your reliable procurement partner, specializing in sourcing, negotiating and delivering quality goods and services tailored to your business needs. We respect procurement integrity, efficiency and delivery time.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a onclick="document.getElementById('contactFormSection').scrollIntoView({ behavior: 'smooth' })" class="btn-primary" style="background: #2563eb; color: white; padding: 0.8rem 2.5rem; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; cursor: pointer; border: none; transition: 0.2s;">
+                Request a Quote →
+              </a>
+            </div>
+          </div>
+          <div class="hero-image" style="background: #1a2a4a; border-radius: 1.5rem; overflow: hidden; height: 450px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.05);">
+            <img src="/images/TinaMark83.jpg" alt="Tinamark - Your Procurement Partner" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+
+      <!-- AREAS OF EXPERTISE (Now showing What We Do services from screenshot 2) -->
+      <div id="areasOfExpertise" class="container section">
+        <h2 class="section-title">Areas of <span>Expertise</span></h2>
+        <div class="grid-3">
+          <div class="card" onclick="openExpertiseModal('sourcing')" style="cursor: pointer;">
+            <div class="picture-slot"><img src="/images/TinaMark66.png" alt="Procurement & Sourcing"></div>
+            <h3>PROCUREMENT &amp; SOURCING</h3>
+            <p>All food safety plan needs, needs listed to source items.</p>
+          </div>
+          <div class="card" onclick="openExpertiseModal('urgent')" style="cursor: pointer;">
+            <div class="picture-slot"><img src="/images/TinaMark67.png" alt="Urgent Supply Request"></div>
+            <h3>URGENT SUPPLY REQUEST</h3>
+            <p>First turnaround for time critical requirements.</p>
+          </div>
+          <div class="card" onclick="openExpertiseModal('bulk')" style="cursor: pointer;">
+            <div class="picture-slot"><img src="/images/TinaMark68.png" alt="Bulk Supply"></div>
+            <h3>BULK SUPPLY</h3>
+            <p>1 large quantity delivery of Potentially ...</p>
+          </div>
+          <div class="card" onclick="openExpertiseModal('delivery')" style="cursor: pointer;">
+            <div class="picture-slot"><img src="/images/TinaMark69.png" alt="Delivery Coordination"></div>
+            <h3>DELIVERY COORDINATION</h3>
+            <p>Fast to and logistics requirements.</p>
+          </div>
+          <div class="card" onclick="openExpertiseModal('negotiation')" style="cursor: pointer;">
+            <div class="picture-slot"><img src="/images/TinaMark70.png" alt="Supplier Negotiation"></div>
+            <h3>SUPPLIER NEGOTIATION</h3>
+            <p>Complete pricing through strong supplier negotiation.</p>
+          </div>
+          <div class="card" onclick="openExpertiseModal('recruiting')" style="cursor: pointer;">
+            <div class="picture-slot"><img src="/images/TinaMark71.png" alt="Recruiting Supply Support"></div>
+            <h3>RECRUITING SUPPLY SUPPORT</h3>
+            <p>Regional network database for sourcing needs.</p>
+          </div>
+          <div class="card" onclick="openExpertiseModal('project')" style="cursor: pointer;">
+            <div class="picture-slot"><img src="/images/TinaMark72.png" alt="Project Based Procurement"></div>
+            <h3>PROJECT BASED PROCUREMENT</h3>
+            <p>Full procurement support for specific projects.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERITOCLOX LOGO - Bottom right of home page -->
+      <div class="container seritoclox-section">
+        <div class="seritoclox-logo-container">
+          <div class="logo-slot">
+            <img src="/images/TinaMark85.jpeg" alt="Seritoclox Logo" onerror="this.parentElement.innerHTML='<i class=\'fas fa-building\' style=\'font-size:1.8rem; color:#2563eb;\'></i>'">
+          </div>
+          <div class="logo-text-content">
+            <span class="trading-division">A TRADING DIVISION OF</span>
+            <span class="brand-name">SERITOCLOX <span>(PTY) LTD</span></span>
+            <span class="tagline"><i class="fas fa-star" style="color: #f5b042; font-size: 0.4rem; margin-right: 4px;"></i> Designed for Excellence. Driven by Integrity.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROCESS SECTION -->
+      <div class="container section">
+        <h2 class="section-title" style="font-size: 2rem;">This Is How We View Your <span>Procurement Challenges</span></h2>
+        <div style="background: #f8fafc; border-radius: 2rem; padding: 3rem 2rem; margin-top: 2rem;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem;">
+            <div style="text-align: center; min-width: 110px; padding: 0.5rem;">
+              <div style="background: #2563eb; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-weight: 700; font-size: 1rem;">1</div>
+              <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.2rem;">VARIETY &amp; MIX</h4>
+              <p style="font-size: 0.75rem; color: #64748b; margin: 0;">The variety of products</p>
+            </div>
+            <div style="font-size: 1.2rem; color: #2563eb;"><i class="fas fa-arrow-right"></i></div>
+            <div style="text-align: center; min-width: 110px; padding: 0.5rem;">
+              <div style="background: #2563eb; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-weight: 700; font-size: 1rem;">2</div>
+              <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.2rem;">WE INVESTIGATE</h4>
+              <p style="font-size: 0.75rem; color: #64748b; margin: 0;">We investigate the market</p>
+            </div>
+            <div style="font-size: 1.2rem; color: #2563eb;"><i class="fas fa-arrow-right"></i></div>
+            <div style="text-align: center; min-width: 110px; padding: 0.5rem;">
+              <div style="background: #2563eb; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-weight: 700; font-size: 1rem;">3</div>
+              <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.2rem;">WE DELIVER</h4>
+              <p style="font-size: 0.75rem; color: #64748b; margin: 0;">We deliver on time</p>
+            </div>
+            <div style="font-size: 1.2rem; color: #2563eb;"><i class="fas fa-arrow-right"></i></div>
+            <div style="text-align: center; min-width: 110px; padding: 0.5rem;">
+              <div style="background: #2563eb; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-weight: 700; font-size: 1rem;">4</div>
+              <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.2rem;">WE SHARE</h4>
+              <p style="font-size: 0.75rem; color: #64748b; margin: 0;">We share knowledge</p>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 2rem; font-size: 2rem; font-weight: 800; color: #2563eb; letter-spacing: 3px;">
+            WITH EASE
+          </div>
+          <div style="text-align: center; margin-top: 1rem;">
+            <a onclick="showPage('howwework')" class="btn-primary" style="background: #2563eb; color: white; padding: 0.8rem 2.5rem; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; cursor: pointer; border: none; transition: 0.2s;">
+              See How It Works in Detail →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 95% SUCCESSFUL -->
+      <div class="container section" style="padding: 1rem 0 3rem 0;">
+        <div style="background: #0f172a; border-radius: 2rem; padding: 3rem 2rem; text-align: center; color: white;">
+          <div style="font-size: 4.5rem; font-weight: 800; color: #60a5fa; line-height: 1;">95%</div>
+          <div style="font-size: 1.3rem; font-weight: 600; letter-spacing: 3px; margin-top: 0.2rem;">SUCCESSFUL</div>
+          <p style="color: #93c5fd; margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto; font-size: 0.95rem;">
+            We don't just complete orders, we build lasting partnerships.
+          </p>
+        </div>
+      </div>
+
+      <!-- COMPANY INFORMATION -->
+      <div class="container section">
+        <h2 class="section-title">Company <span>Information</span></h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 1.5rem; padding: 2rem; color: white; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: #2563eb; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0;">Company Details</h3>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+              <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; align-items: flex-start;">
+                <i class="fas fa-trademark" style="color: #60a5fa; min-width: 20px; margin-top: 0.2rem;"></i>
+                <div><strong style="color: #93c5fd;">Company Name:</strong><br>Tinamark (Pty) Ltd</div>
+              </div>
+              <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; align-items: flex-start;">
+                <i class="fas fa-store" style="color: #60a5fa; min-width: 20px; margin-top: 0.2rem;"></i>
+                <div><strong style="color: #93c5fd;">Trading As:</strong><br>Tinamark - Engage247</div>
+              </div>
+              <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; align-items: flex-start;">
+                <i class="fas fa-file-invoice" style="color: #60a5fa; min-width: 20px; margin-top: 0.2rem;"></i>
+                <div><strong style="color: #93c5fd;">VAT Number:</strong><br>4570276065</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 1.5rem; padding: 2rem; color: white; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: #10b981; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                <i class="fas fa-address-card"></i>
+              </div>
+              <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0;">Contact & Address</h3>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+              <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; align-items: flex-start;">
+                <i class="fas fa-map-marker-alt" style="color: #10b981; min-width: 20px; margin-top: 0.2rem;"></i>
+                <div><strong style="color: #93c5fd;">Registered Address:</strong><br>7A Hillcrest Avenue, Bedfordview, JHB<br>Plot 791 Nedsersetting, Koppies 9540</div>
+              </div>
+              <div style="display: flex; gap: 0.8rem; margin-bottom: 0.8rem; align-items: center;">
+                <i class="fas fa-phone" style="color: #10b981; min-width: 20px;"></i>
+                <div><strong style="color: #93c5fd;">Contact Number:</strong><br>078 490 8745</div>
+              </div>
+              <div style="display: flex; gap: 0.8rem; align-items: center;">
+                <i class="fas fa-envelope" style="color: #10b981; min-width: 20px;"></i>
+                <div><strong style="color: #93c5fd;">Email Address:</strong><br>tinamarksourcing@yahoo.com</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 1.5rem; padding: 2rem; color: white; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: #f59e0b; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0;">Our Values</h3>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                <div style="background: rgba(37,99,235,0.15); padding: 0.8rem; border-radius: 0.8rem; text-align: center; border: 1px solid rgba(37,99,235,0.2);">
+                  <i class="fas fa-bolt" style="color: #60a5fa; font-size: 1.5rem; display: block; margin-bottom: 0.3rem;"></i>
+                  <span style="font-weight: 700; font-size: 0.8rem; display: block;">RELIABLE</span>
+                  <small style="color: #94a3b8; font-size: 0.65rem;">Fast, stress free procurement</small>
+                </div>
+                <div style="background: rgba(16,185,129,0.15); padding: 0.8rem; border-radius: 0.8rem; text-align: center; border: 1px solid rgba(16,185,129,0.2);">
+                  <i class="fas fa-headset" style="color: #34d399; font-size: 1.5rem; display: block; margin-bottom: 0.3rem;"></i>
+                  <span style="font-weight: 700; font-size: 0.8rem; display: block;">RESPONSIVE</span>
+                  <small style="color: #94a3b8; font-size: 0.65rem;">We work with urgency</small>
+                </div>
+                <div style="background: rgba(245,158,11,0.15); padding: 0.8rem; border-radius: 0.8rem; text-align: center; border: 1px solid rgba(245,158,11,0.2);">
+                  <i class="fas fa-handshake" style="color: #fbbf24; font-size: 1.5rem; display: block; margin-bottom: 0.3rem;"></i>
+                  <span style="font-weight: 700; font-size: 0.8rem; display: block;">TRUSTED</span>
+                  <small style="color: #94a3b8; font-size: 0.65rem;">Strong supplier network</small>
+                </div>
+                <div style="background: rgba(139,92,246,0.15); padding: 0.8rem; border-radius: 0.8rem; text-align: center; border: 1px solid rgba(139,92,246,0.2);">
+                  <i class="fas fa-medal" style="color: #a78bfa; font-size: 1.5rem; display: block; margin-bottom: 0.3rem;"></i>
+                  <span style="font-weight: 700; font-size: 0.8rem; display: block;">QUALITY</span>
+                  <small style="color: #94a3b8; font-size: 0.65rem;">Right products, right time</small>
+                </div>
+                <div style="background: rgba(236,72,153,0.15); padding: 0.8rem; border-radius: 0.8rem; text-align: center; border: 1px solid rgba(236,72,153,0.2); grid-column: span 2; max-width: 50%; margin: 0 auto;">
+                  <i class="fas fa-users" style="color: #f472b6; font-size: 1.5rem; display: block; margin-bottom: 0.3rem;"></i>
+                  <span style="font-weight: 700; font-size: 0.8rem; display: block;">COMMITTED</span>
+                  <small style="color: #94a3b8; font-size: 0.65rem;">Focused on your success</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 1.5rem; padding: 2rem; color: white; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: #8b5cf6; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0;">Nature of Business</h3>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+              <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                Procurement and supply solutions across industrial, medical, engineering, safety and office environments.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="background: rgba(37,99,235,0.2); color: #60a5fa; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(37,99,235,0.3);">
+                  <i class="fas fa-industry" style="margin-right: 0.4rem;"></i> Industrial
+                </span>
+                <span style="background: rgba(16,185,129,0.2); color: #34d399; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(16,185,129,0.3);">
+                  <i class="fas fa-heartbeat" style="margin-right: 0.4rem;"></i> Medical
+                </span>
+                <span style="background: rgba(245,158,11,0.2); color: #fbbf24; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(245,158,11,0.3);">
+                  <i class="fas fa-cogs" style="margin-right: 0.4rem;"></i> Engineering
+                </span>
+                <span style="background: rgba(139,92,246,0.2); color: #a78bfa; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(139,92,246,0.3);">
+                  <i class="fas fa-shield-alt" style="margin-right: 0.4rem;"></i> Safety
+                </span>
+                <span style="background: rgba(236,72,153,0.2); color: #f472b6; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(236,72,153,0.3);">
+                  <i class="fas fa-building" style="margin-right: 0.4rem;"></i> Office
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT/QUOTE -->
+      <div id="contactFormSection" class="container section contact-section">
+        <h2 class="section-title">Get a <span>Quote</span></h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Contact Us Today</h3>
+            <div class="contact-detail"><i class="fas fa-phone-alt"></i> 078 490 8745</div>
+            <div class="contact-detail"><i class="fab fa-whatsapp"></i> 078 490 8745 (WhatsApp)</div>
+            <div class="contact-detail"><i class="fas fa-envelope"></i> tinamarksourcing@yahoo.com</div>
+            <div class="contact-detail"><i class="fas fa-truck"></i> Nationwide Delivery – South Africa</div>
+            <div style="margin-top: 1rem; font-size: 1.1rem; font-weight: 700; color: #0f172a;">One Partner. Every Solution.</div>
+            <a href="https://wa.me/27784908745" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-block; background: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+          </div>
+          <div class="contact-form">
+            <h3>Request a Quote</h3>
+            <form id="quoteForm">
+              <input type="text" id="fullName" placeholder="Full Name *" required>
+              <input type="email" id="email" placeholder="Email Address *" required>
+              <input type="tel" id="phone" placeholder="Phone Number">
+              <textarea id="message" rows="4" placeholder="Tell us what you need (items, quantities, delivery location) *" required></textarea>
+              <button type="submit" class="btn-whatsapp" style="width:100%;">
+                <i class="fab fa-whatsapp"></i> Send Enquiry → 
+              </button>
+            </form>
+            <div id="formMessage" style="margin-top: 1rem; text-align: center; font-size: 0.85rem;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS SECTION - GOOGLE SHEETS INTEGRATION -->
+      <div class="container section">
+        <h2 class="section-title">Client <span>Reviews & Feedback</span></h2>
+        <div class="reviews-container">
+          
+          <!-- REVIEW FORM -->
+          <div class="review-form">
+            <h3>Leave a Review</h3>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">
+              Your feedback helps us serve you better. All reviews are public and help other clients make informed decisions.
+            </p>
+            
+            <!-- Google Form Button -->
+            <div style="text-align: center; margin: 1rem 0;">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-YUcfZTAELk5cO7U9EEODfTaRwk_zzczg_KnrTD5DMCS00g/viewform?usp=header" target="_blank" class="btn-primary" style="background: #f5b042; border-color: #f5b042;">
+                <i class="fas fa-star"></i> Leave a Review on Google Form
+              </a>
+              <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">
+                You will be redirected to a Google Form to submit your review.
+              </p>
+            </div>
+          </div>
+
+          <!-- REVIEWS DISPLAY -->
+          <div id="reviewsList">
+            <h3>What Our Clients Say</h3>
+            <div id="noReviews" style="text-align: center; padding: 2rem; color: #64748b;">Loading reviews...</div>
+          </div>
+          
+          <!-- Loading indicator -->
+          <div id="reviewsLoading" style="text-align: center; padding: 1rem; color: #64748b; display: none;">
+            <i class="fas fa-spinner fa-spin"></i> Loading reviews from Google Sheets...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT WE DO PAGE (Now showing original Areas of Expertise from screenshot 1) -->
+    <div id="whatwedo" class="page">
+      <div class="container section">
+        <h2 class="section-title">What We <span>Do</span></h2>
+        <p class="section-subtitle">From sourcing to delivery, we handle your procurement needs from start to finish across all industries.</p>
+
+        <h3 style="font-size: 1.5rem; font-weight: 700; color: #0f172a; text-align: center; margin-bottom: 1rem;">Our Services</h3>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">We make procurement simple, efficient and stress free.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="picture-slot"><img src="/images/TinaMark50.png" alt="PPE & Workwear"></div>
+            <h3>PPE &amp; WORKWEAR</h3>
+            <p>Material for production for any workshop</p>
+          </div>
+          <div class="card">
+            <div class="picture-slot"><img src="/images/TinaMark55.png" alt="Industrial & Engineering"></div>
+            <h3>INDUSTRIAL &amp; EMERGENCY</h3>
+            <p>Standard components, easy acquisition supplies</p>
+          </div>
+          <div class="card">
+            <div class="picture-slot"><img src="/images/TinaMark54.png" alt="Office & Operational Supplies"></div>
+            <h3>OFFICE &amp; OPERATIONAL SUPPORT</h3>
+            <p>Delivery, finish and office accessories</p>
+          </div>
+          <div class="card">
+            <div class="picture-slot"><img src="/images/TinaMark84.jpg" alt="Furniture & Equipment"></div>
+            <h3>FURNITURE &amp; EQUIPMENT</h3>
+            <p>Office, industrial and industrial furniture</p>
+          </div>
+          <div class="card">
+            <div class="picture-slot"><img src="/images/TinaMark52.png" alt="Cleaning & Hygiene"></div>
+            <h3>CLEANING &amp; HYGIENE</h3>
+            <p>Industrial and facility hygiene products</p>
+          </div>
+          <div class="card">
+            <div class="picture-slot"><img src="/images/TinaMark51.png" alt="Medical & Disposables"></div>
+            <h3>MEDICAL &amp; DISPOSABLES</h3>
+            <p>Quality supplies for healthcare environments</p>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <span>✦ Industries We Serve ✦</span>
+        </div>
+
+        <h3 style="font-size: 1.5rem; font-weight: 700; color: #0f172a; text-align: center; margin-bottom: 0.5rem;">Industries We Serve</h3>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">Tinamark provides tailored procurement and supply solutions across a wide range of industries.</p>
+
+        <div class="industries-grid">
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark56.png" alt="Mining & Industrial"></div>
+            <h3>Mining &amp; Industrial</h3>
+            <div class="industry-description"><i>Tinamark supports mining and industrial operations with reliable supply of PPE, safety equipment, and industrial consumables. We understand the high risk nature of mining environments and provide products that meet rigorous safety standards. Our responsive supply chain ensures that your site never faces downtime due to lack of essential supplies. From head to toe protection to specialized mining tools, we deliver quality assured products that keep your workforce safe and your operations running efficiently.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark57.png" alt="Construction"></div>
+            <h3>Construction</h3>
+            <div class="industry-description"><i>For construction sites across South Africa, Tinamark supplies essential PPE, safety gear, and site consumables. We know that construction projects run on tight schedules, and any delay in supplies can cost time and money. Our fast turnaround times and bulk supply capabilities ensure that your site remains fully stocked with certified safety equipment, from hard hats and high vis vests to fall protection gear. We work with leading manufacturers to deliver products that comply with all relevant safety standards, giving you peace of mind while your team builds.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark58.png" alt="Engineering"></div>
+            <h3>Engineering</h3>
+            <div class="industry-description"><i>Engineering workshops and manufacturing facilities require precision supplies and reliable protective equipment. Tinamark partners with engineering firms to provide everything from workshop consumables to specialized safety gear. We understand the technical requirements of engineering environments and source products that meet exact specifications. Whether you need maintenance supplies, workshop tools, or PPE for your engineering team, we deliver quality products that support precision work and workplace safety.</i></div>           
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark59.png" alt="Medical & Healthcare"></div>
+            <h3>Medical &amp; Healthcare</h3>
+            <div class="industry-description"><i>Healthcare facilities require sterile, high quality medical supplies delivered with urgency and precision. Tinamark supplies hospitals, clinics, and medical practices with surgical consumables, disposable products, and medical grade PPE. We source from trusted manufacturers who meet strict quality standards, ensuring that your medical team has access to reliable products when they need them. From surgical masks and gloves to feeding tubes and catheters, we support the healthcare sector with dependable supply solutions.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark60.png" alt="Abattoirs & Food Processing"></div>
+            <h3>Abattoirs &amp; Food Processing</h3>
+            <div class="industry-description"><i>Food processing facilities and abattoirs have unique hygiene and safety requirements. Tinamark supplies specialized PPE and cleaning products designed for food safe environments. We understand the importance of maintaining strict hygiene standards and provide products that help your facility comply with health regulations. From waterproof aprons and cut resistant gloves to sanitization supplies, we deliver quality products that protect your workers and maintain food safety standards.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark61.png" alt="Security Companies"></div>
+            <h3>Security Companies</h3>
+            <div class="industry-description"><i>Security personnel need durable, professional grade uniforms and protective equipment. Tinamark supplies security companies with high quality uniforms, tactical gear, and safety accessories that enhance both comfort and protection. We understand the demands of round the clock security operations and provide products that withstand daily wear while maintaining a professional appearance. From reflective vests to duty boots, we help keep your security team equipped and visible.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark62.png" alt="Cleaning Companies"></div>
+            <h3>Cleaning Companies</h3>
+            <div class="industry-description"><i>Professional cleaning companies require reliable supplies to maintain hygiene standards across their client sites. Tinamark provides cleaning and janitorial supplies, including PPE for cleaning staff, disposable products, and industrial cleaning solutions. We support cleaning contractors with bulk ordering and recurring supply arrangements, ensuring that you never run out of essential products. From gloves and masks to cleaning chemicals and disposable wipes, we help you deliver exceptional service to your clients.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark63.png" alt="Warehousing & Logistics"></div>
+            <h3>Warehousing &amp; Logistics</h3>
+            <div class="industry-description"><i>Warehouses and logistics hubs require safety equipment that protects workers in fast paced environments. Tinamark supplies warehouse operators with PPE, safety gear, and operational supplies that support efficiency and workplace safety. From high visibility clothing to safety footwear, we provide products that meet the demands of loading bays, storage facilities, and distribution centers. Our bulk supply options and fast delivery ensure that your warehouse stays compliant with safety regulations.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark64.png" alt="Schools & Institutions"></div>
+            <h3>Schools &amp; Institutions</h3>
+            <div class="industry-description"><i>Educational institutions and public facilities need reliable supplies for daily operations and emergency preparedness. Tinamark provides schools with essential products including cleaning supplies, hygiene products, and basic first aid equipment. We understand the importance of maintaining safe, healthy environments for students and staff, and we deliver quality products that help institutions meet their operational needs. From hand sanitizers to disposable masks, we support schools in keeping their communities safe.</i></div>
+          </div>
+
+          <div class="industry-card">
+            <div class="industry-picture-slot"><img src="/images/TinaMark65.png" alt="Agriculture & Farming"></div>
+            <h3>Agriculture &amp; Farming</h3>
+            <div class="industry-description"><i>Agricultural operations require durable, practical protective equipment that can withstand outdoor conditions. Tinamark supplies farms and agribusinesses with PPE, workwear, and safety gear designed for agricultural environments. From sun protection and waterproof clothing to chemical resistant gloves for pesticide application, we provide products that keep farm workers safe and comfortable. Our responsive service ensures that your agricultural operation receives supplies when you need them, minimizing downtime during critical seasons.</i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW WE WORK PAGE -->
+    <div id="howwework" class="page">
+      <div class="container section">
+        <h2 class="section-title">How We <span>Work</span></h2>
+        <p class="section-subtitle">We make procurement simple, efficient and stress free. Here's how we do it.</p>
+
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>YOU HAVE A NEED</h3>
+            <p>You tell us what you need. It could be PPE, office furniture, medical supplies, industrial equipment, or anything else your business requires. We don't judge, we just listen and understand your requirements.</p>
+            <div class="example"><i class="fas fa-lightbulb"></i> Example: A mining company needs 500 pairs of safety boots urgently for a new site opening.</div>
+            <div class="why"><i class="fas fa-check-circle"></i> Why it matters: We take the time to understand exactly what you need so we can find the right solution.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>WE INVESTIGATE</h3>
+            <p>We search our extensive supplier network locally and internationally. We explore the best options, compare prices, and check availability. Our team works quickly to find the right products for you.</p>
+            <div class="example"><i class="fas fa-lightbulb"></i> Example: We contacted 15 safety boot suppliers and found the best quality at the right price.</div>
+            <div class="why"><i class="fas fa-check-circle"></i> Why it matters: Our network saves you hours of searching and calling around.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>WE SOLVE</h3>
+            <p>We negotiate pricing, confirm availability, and secure the right solution for you. We handle all the paperwork and coordination so you don't have to worry about a thing.</p>
+            <div class="example"><i class="fas fa-lightbulb"></i> Example: We secured a 15% discount for bulk ordering and confirmed delivery within 3 days.</div>
+            <div class="why"><i class="fas fa-check-circle"></i> Why it matters: We get you the best deal so you don't have to negotiate.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>WE DELIVER</h3>
+            <p>Your goods are delivered on time, with peace of mind. We coordinate logistics and track everything until it reaches your door. We don't stop until you have what you need.</p>
+            <div class="example"><i class="fas fa-lightbulb"></i> Example: The safety boots arrived on site 2 days ahead of schedule.</div>
+            <div class="why"><i class="fas fa-check-circle"></i> Why it matters: You get what you need, when you need it.</div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>YOU SUCCEED</h3>
+            <p>Your operations run smoothly. Your staff has what they need to do their jobs. Your business keeps moving forward. Your success is our success.</p>
+            <div class="example"><i class="fas fa-lightbulb"></i> Example: The mine opened on time with all staff fully equipped and safe.</div>
+            <div class="why"><i class="fas fa-check-circle"></i> Why it matters: Your success is our success. We're in this together.</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; font-size: 2rem; font-weight: 800; color: #2563eb; letter-spacing: 3px;">
+          WITH EASE
+        </div>
+        <p style="text-align: center; color: #64748b; margin-top: 0.5rem;">We make procurement simple, efficient, and stress free.</p>
+
+        <div class="catalogue-section">
+          <h2>Our Service <span>Catalogue</span></h2>
+          <p>Browse through our service catalogue to see the full range of products and services we can source for your business. Click the arrows to flip through the pages.</p>
+          
+          <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15); background: #f1f5f9;">
+            <iframe 
+              allowfullscreen="allowfullscreen" 
+              allow="autoplay; fullscreen; clipboard-write" 
+              scrolling="no" 
+              class="fp-iframe" 
+              src="https://heyzine.com/flip-book/e49866fe87.html" 
+              style="border: none; width: 100%; height: 500px; display: block;">
+            </iframe>
+          </div>
+          
+          <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;">
+            <a href="https://heyzine.com/flip-book/e49866fe87.html" target="_blank" class="btn-download">
+              <i class="fas fa-expand"></i> View Full Screen
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" class="page">
+      <div class="container section">
+        <button class="btn-outline" onclick="showPage('home')" style="margin-bottom: 2rem; display: inline-block;"><i class="fas fa-arrow-left"></i> Back to Home</button>
+        
+        <h2 class="section-title">A Glimpse Into What We <span>Source</span></h2>
+        <p class="section-subtitle">From PPE and medical supplies to industrial equipment and office essentials — here are just a few of the products we've helped our clients find. Whatever you need, we'll track it down for you.</p>
+        
+        <div class="gallery-grid">
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark1.jpeg')"><img src="/images/TinaMark1.jpeg" alt="Product 1"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark2.jpeg')"><img src="/images/TinaMark2.jpeg" alt="Product 2"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark3.jpeg')"><img src="/images/TinaMark3.jpeg" alt="Product 3"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark4.jpeg')"><img src="/images/TinaMark4.jpeg" alt="Product 4"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark5.jpeg')"><img src="/images/TinaMark5.jpeg" alt="Product 5"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark6.jpeg')"><img src="/images/TinaMark6.jpeg" alt="Product 6"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark7.jpeg')"><img src="/images/TinaMark7.jpeg" alt="Product 7"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark8.jpeg')"><img src="/images/TinaMark8.jpeg" alt="Product 8"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark9.jpeg')"><img src="/images/TinaMark9.jpeg" alt="Product 9"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark12.jpeg')"><img src="/images/TinaMark12.jpeg" alt="Product 10"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark13.jpeg')"><img src="/images/TinaMark13.jpeg" alt="Product 11"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark14.jpeg')"><img src="/images/TinaMark14.jpeg" alt="Product 12"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark15.jpeg')"><img src="/images/TinaMark15.jpeg" alt="Product 13"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark16.jpeg')"><img src="/images/TinaMark16.jpeg" alt="Product 14"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark17.jpeg')"><img src="/images/TinaMark17.jpeg" alt="Product 15"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark18.jpeg')"><img src="/images/TinaMark18.jpeg" alt="Product 16"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark19.jpeg')"><img src="/images/TinaMark19.jpeg" alt="Product 17"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark20.jpeg')"><img src="/images/TinaMark20.jpeg" alt="Product 18"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark23.jpeg')"><img src="/images/TinaMark23.jpeg" alt="Product 19"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark24.jpeg')"><img src="/images/TinaMark24.jpeg" alt="Product 20"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark25.jpeg')"><img src="/images/TinaMark25.jpeg" alt="Product 21"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark26.jpeg')"><img src="/images/TinaMark26.jpeg" alt="Product 22"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark27.jpeg')"><img src="/images/TinaMark27.jpeg" alt="Product 23"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark28.jpeg')"><img src="/images/TinaMark28.jpeg" alt="Product 24"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark29.jpeg')"><img src="/images/TinaMark29.jpeg" alt="Product 25"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark30.jpeg')"><img src="/images/TinaMark30.jpeg" alt="Product 26"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark31.jpeg')"><img src="/images/TinaMark31.jpeg" alt="Product 27"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark32.jpeg')"><img src="/images/TinaMark32.jpeg" alt="Product 28"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark33.jpeg')"><img src="/images/TinaMark33.jpeg" alt="Product 29"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark35.jpeg')"><img src="/images/TinaMark35.jpeg" alt="Product 31"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark36.jpeg')"><img src="/images/TinaMark36.jpeg" alt="Product 32"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark37.jpeg')"><img src="/images/TinaMark37.jpeg" alt="Product 33"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark38.jpeg')"><img src="/images/TinaMark38.jpeg" alt="Product 34"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark39.jpeg')"><img src="/images/TinaMark39.jpeg" alt="Product 35"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark40.jpeg')"><img src="/images/TinaMark40.jpeg" alt="Product 36"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark41.jpeg')"><img src="/images/TinaMark41.jpeg" alt="Product 37"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark42.jpeg')"><img src="/images/TinaMark42.jpeg" alt="Product 38"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark43.jpeg')"><img src="/images/TinaMark43.jpeg" alt="Product 39"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark44.jpeg')"><img src="/images/TinaMark44.jpeg" alt="Product 40"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark73.jpeg')"><img src="/images/TinaMark73.jpeg" alt="Product 41"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark74.jpeg')"><img src="/images/TinaMark74.jpeg" alt="Product 42"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark75.jpeg')"><img src="/images/TinaMark75.jpeg" alt="Product 43"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark76.jpeg')"><img src="/images/TinaMark76.jpeg" alt="Product 44"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark77.jpeg')"><img src="/images/TinaMark77.jpeg" alt="Product 45"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark78.jpeg')"><img src="/images/TinaMark78.jpeg" alt="Product 46"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark79.jpeg')"><img src="/images/TinaMark79.jpeg" alt="Product 47"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark80.jpeg')"><img src="/images/TinaMark80.jpeg" alt="Product 48"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark81.jpeg')"><img src="/images/TinaMark81.jpeg" alt="Product 49"></div>
+          <div class="gallery-slot" onclick="openLightbox('/images/TinaMark82.jpeg')"><img src="/images/TinaMark82.jpeg" alt="Product 50"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-strip">
+      <div class="container">
+        <span><i class="fas fa-check-circle"></i> Fast Turnaround</span>
+        <span><i class="fas fa-truck"></i> Nationwide Delivery</span>
+        <span><i class="fas fa-headset"></i> Responsive Support</span>
+        <span><i class="fas fa-handshake"></i> Trusted Supplier Network</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Large view">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Tinamark (Pty) Ltd – Keeping Your Operations Covered</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">VAT: 4570276065 | Trading as: Tinamark - Engage247</p>
+      <p style="margin-top: 0.8rem; font-size: 0.7rem; color: #64748b;">Website designed by <strong>Kgang/Khang.Freelancing</strong> </p>
+    </div>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => { page.classList.remove('active-page'); });
+      document.getElementById(pageId).classList.add('active-page');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('menuOverlay');
+      const hamburger = document.getElementById('hamburgerBtn');
+      menu.classList.toggle('open');
+      overlay.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('menuOverlay');
+      const hamburger = document.getElementById('hamburgerBtn');
+      menu.classList.remove('open');
+      overlay.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+
+    const expertiseData = {
+      sourcing: {
+        icon: 'fa-search',
+        title: 'Procurement & Sourcing',
+        subtitle: 'All food safety plan needs, needs listed to source items',
+        description: 'We help you source everything your business needs. From raw materials to finished goods, we find the right products at the right price. Our sourcing expertise covers food safety plans, manufacturing inputs, and specialized procurement requirements.',
+        items: [
+          'Raw materials sourcing',
+          'Food safety plan items',
+          'Manufacturing inputs',
+          'Specialized procurement',
+          'Supply chain optimization',
+          'Supplier identification',
+          'Quality assurance'
+        ]
+      },
+      urgent: {
+        icon: 'fa-clock',
+        title: 'Urgent Supply Request',
+        subtitle: 'First turnaround for time critical requirements',
+        description: 'When you need supplies fast, we deliver. Our urgent supply service ensures that time-critical requirements are met with speed and efficiency. We prioritize your request and expedite the procurement process to get you what you need as quickly as possible.',
+        items: [
+          'Same-day processing',
+          'Emergency procurement',
+          'Priority sourcing',
+          'Express delivery coordination',
+          'Urgent PPE supplies',
+          'Critical equipment sourcing'
+        ]
+      },
+      bulk: {
+        icon: 'fa-boxes',
+        title: 'Bulk Supply',
+        subtitle: '1 large quantity delivery of Potentially ...',
+        description: 'We handle large quantity deliveries efficiently and cost-effectively. Our bulk supply service ensures that you get the volume you need at competitive prices, with streamlined logistics for large-scale operations.',
+        items: [
+          'Large quantity deliveries',
+          'Volume-based pricing',
+          'Warehouse coordination',
+          'Distribution logistics',
+          'Bulk PPE supplies',
+          'Industrial consumables'
+        ]
+      },
+      delivery: {
+        icon: 'fa-truck',
+        title: 'Delivery Coordination',
+        subtitle: 'Fast to and logistics requirements',
+        description: 'We manage end-to-end logistics so you don\'t have to. Our delivery coordination service ensures that your supplies arrive where they need to be, when they need to be there.',
+        items: [
+          'End-to-end logistics',
+          'Route optimization',
+          'Time-sensitive delivery',
+          'Nationwide distribution',
+          'Tracking & monitoring',
+          'Last-mile delivery'
+        ]
+      },
+      negotiation: {
+        icon: 'fa-handshake',
+        title: 'Supplier Negotiation',
+        subtitle: 'Complete pricing through strong supplier negotiation',
+        description: 'We leverage our strong supplier relationships to negotiate the best prices for you. Our procurement experts handle all negotiations, ensuring you get competitive pricing without the hassle.',
+        items: [
+          'Price negotiation',
+          'Contract management',
+          'Volume discounts',
+          'Long-term agreements',
+          'Supplier relationship management',
+          'Cost optimization'
+        ]
+      },
+      recruiting: {
+        icon: 'fa-network-wired',
+        title: 'Recruiting Supply Support',
+        subtitle: 'Regional network database for sourcing needs',
+        description: 'Our extensive regional network database gives us access to a wide range of suppliers. We use our connections to find the best sourcing solutions for your unique needs.',
+        items: [
+          'Supplier database access',
+          'Regional sourcing networks',
+          'Vendor identification',
+          'Supply chain connections',
+          'Local and international sourcing',
+          'Network optimization'
+        ]
+      },
+      project: {
+        icon: 'fa-project-diagram',
+        title: 'Project Based Procurement',
+        subtitle: 'Full procurement support for specific projects',
+        description: 'We provide comprehensive procurement support for your specific projects. From planning to execution, we handle all aspects of procurement so you can focus on your core business.',
+        items: [
+          'Project planning',
+          'Budget management',
+          'Supplier selection',
+          'Timeline coordination',
+          'Quality control',
+          'Project delivery'
+        ]
+      }
+    };
+
+    function openExpertiseModal(category) {
+      const data = expertiseData[category];
+      if (!data) return;
+
+      const modal = document.getElementById('expertiseModal');
+      const icon = document.getElementById('modalIcon');
+      const title = document.getElementById('modalTitle');
+      const subtitle = document.getElementById('modalSubtitle');
+      const description = document.getElementById('modalDescription');
+      const list = document.getElementById('modalList');
+
+      icon.innerHTML = `<i class="fas ${data.icon}"></i>`;
+      title.textContent = data.title;
+      subtitle.textContent = data.subtitle;
+      description.innerHTML = `<p>${data.description}</p>`;
+
+      let listHtml = '';
+      data.items.forEach(item => {
+        listHtml += `<li><i class="fas fa-check-circle"></i> ${item}</li>`;
+      });
+      list.innerHTML = listHtml;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeExpertiseModal() {
+      const modal = document.getElementById('expertiseModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeExpertiseModal();
+        closeMenu();
+        closeLightbox();
+      }
+    });
+
+    document.getElementById('expertiseModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeExpertiseModal();
+      }
+    });
+
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (!name || !email || !message) {
+        document.getElementById('formMessage').innerHTML = '⚠️ Please fill in all required fields.';
+        document.getElementById('formMessage').style.color = '#c25a2a';
+        return;
+      }
+      
+      const whatsappMessage = `*New Quote Request from Tinamark Website*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Message:* ${encodeURIComponent(message)}`;
+      window.open(`https://wa.me/27784908745?text=${whatsappMessage}`, '_blank');
+      
+      document.getElementById('formMessage').innerHTML = '✅ Redirecting to WhatsApp... Please send your message.';
+      document.getElementById('formMessage').style.color = '#1f6e43';
+      setTimeout(() => { 
+        document.getElementById('quoteForm').reset(); 
+        setTimeout(() => { 
+          document.getElementById('formMessage').innerHTML = ''; 
+        }, 5000); 
+      }, 2000);
+    });
+
+    const GOOGLE_SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQMocGogW1eiB-LOW4M5Im1PvIYrqYD8OdmGmu4NVOXKGp6LOBrhbdZouEL5fLlq5Fynp3rta9wlU8K/pub?output=csv';
+    const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd-YUcfZTAELk5cO7U9EEODfTaRwk_zzczg_KnrTD5DMCS00g/viewform?usp=header';
+
+    const defaultReviews = [
+      {
+        id: 1,
+        name: "Sipho M.",
+        rating: 5,
+        text: "Tinamark has been a game changer for our mining operations. We needed safety boots urgently and they delivered within 48 hours. Their responsiveness is unmatched!",
+        date: "2025-10-15"
+      },
+      {
+        id: 2,
+        name: "Lindiwe K.",
+        rating: 5,
+        text: "I was struggling to find medical consumables for my clinic. Tinamark sourced everything I needed and saved me hours of calling around. Highly recommended.",
+        date: "2025-09-28"
+      },
+      {
+        id: 3,
+        name: "Thabo N.",
+        rating: 4,
+        text: "Professional, reliable and fast. They helped us get industrial cleaning supplies for our facility at a great price. Will definitely use them again.",
+        date: "2025-09-10"
+      }
+    ];
+
+    async function loadReviewsFromSheets() {
+      const loadingEl = document.getElementById('reviewsLoading');
+      const noReviewsEl = document.getElementById('noReviews');
+      
+      try {
+        if (loadingEl) loadingEl.style.display = 'block';
+        
+        const response = await fetch(GOOGLE_SHEETS_URL);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const csvText = await response.text();
+        
+        if (!csvText || csvText.trim() === '') {
+          throw new Error('Empty CSV data');
+        }
+        
+        const lines = csvText.split('\n').filter(line => line.trim() !== '');
+        
+        if (lines.length < 2) {
+          throw new Error('No data rows found');
+        }
+        
+        const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+        
+        const nameIndex = headers.findIndex(h => h.includes('name'));
+        const ratingIndex = headers.findIndex(h => h.includes('rating'));
+        const textIndex = headers.findIndex(h => h.includes('text') || h.includes('feedback') || h.includes('comment'));
+        const dateIndex = headers.findIndex(h => h.includes('date'));
+        
+        const reviews = [];
+        
+        for (let i = 1; i < lines.length; i++) {
+          const values = lines[i].split(',').map(v => v.trim());
+          
+          const name = nameIndex >= 0 ? values[nameIndex] || 'Anonymous' : 'Anonymous';
+          if (!name || name === '') continue;
+          
+          const rating = ratingIndex >= 0 ? parseInt(values[ratingIndex]) || 5 : 5;
+          const text = textIndex >= 0 ? values[textIndex] || '' : '';
+          const date = dateIndex >= 0 ? values[dateIndex] || new Date().toLocaleDateString() : new Date().toLocaleDateString();
+          
+          if (!text) continue;
+          
+          reviews.push({
+            id: Date.now() + i,
+            name: name,
+            rating: Math.min(5, Math.max(1, rating)),
+            text: text,
+            date: date
+          });
+        }
+        
+        if (reviews.length === 0) {
+          throw new Error('No valid reviews found');
+        }
+        
+        if (loadingEl) loadingEl.style.display = 'none';
+        displayReviews(reviews);
+        
+      } catch (error) {
+        console.error('Error loading reviews from Google Sheets:', error);
+        if (loadingEl) loadingEl.style.display = 'none';
+        displayReviews(defaultReviews);
+        showMessage('⚠️ Unable to load reviews from Google Sheets. Showing sample reviews.', 'error');
+      }
+    }
+
+    function displayReviews(reviews) {
+      const container = document.getElementById('reviewsList');
+      const noReviewsEl = document.getElementById('noReviews');
+      
+      if (!reviews || reviews.length === 0) {
+        if (noReviewsEl) {
+          noReviewsEl.style.display = 'block';
+          noReviewsEl.innerHTML = 'No reviews yet. Be the first to leave feedback!';
+        }
+        return;
+      }
+      
+      if (noReviewsEl) noReviewsEl.style.display = 'none';
+      
+      let html = '<h3>What Our Clients Say</h3>';
+      
+      const sortedReviews = [...reviews].reverse().slice(0, 20);
+      
+      sortedReviews.forEach(review => {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+          stars += i <= review.rating ? '★' : '☆';
+        }
+        html += `<div class="review-card">
+          <div class="review-name">${escapeHtml(review.name)}</div>
+          <div class="review-stars">${stars}</div>
+          <div class="review-text">${escapeHtml(review.text)}</div>
+          <div class="review-date">${escapeHtml(review.date)}</div>
+        </div>`;
+      });
+      
+      container.innerHTML = html;
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function showMessage(msg, type = 'info') {
+      const el = document.getElementById('reviewMessage');
+      if (!el) return;
+      el.textContent = msg;
+      el.className = type;
+      el.style.display = 'block';
+      setTimeout(() => {
+        el.style.display = 'none';
+      }, 6000);
+    }
+
+    loadReviewsFromSheets();
+
+    function openLightbox(imageSrc) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = imageSrc;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+      document.getElementById('lightbox-img').src = '';
+    }
+  </script>
+</body>
+</html>
