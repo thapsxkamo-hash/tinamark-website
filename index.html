@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Tinamark | Reliable Procurement & Supply Solutions</title>
+  <meta name="description" content="Tinamark is a leading PPE supplier in South Africa, supplying industrial PPE, workwear, engineering supplies, office furniture, cleaning & hygiene products, and medical disposables.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -294,6 +295,191 @@
       object-fit: cover;
     }
 
+    /* ================================================ */
+    /* NEW: SUPPLY CATEGORIES CAROUSEL SECTION         */
+    /* ================================================ */
+    .supply-categories-section {
+      padding: 3rem 0;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .supply-categories-section .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .supply-categories-section .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #2563eb;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+    .supply-categories-section .section-heading {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .supply-categories-section .section-heading span {
+      color: #2563eb;
+    }
+    .supply-categories-section .section-description {
+      text-align: center;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 33.333%;
+      padding: 0 0.75rem;
+      box-sizing: border-box;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: 0.3s;
+      height: 100%;
+      border: 1px solid #e2e8f0;
+    }
+    .category-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+      border-color: #2563eb;
+    }
+
+    .category-card .category-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .category-card .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+    .category-card:hover .category-image img {
+      transform: scale(1.03);
+    }
+
+    .category-card .category-content {
+      padding: 1.5rem 1.5rem 1.8rem;
+      text-align: center;
+    }
+    .category-card .category-content h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+    .category-card .category-content h3 span {
+      color: #2563eb;
+    }
+    .category-card .category-content p {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Carousel Navigation Dots */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      padding: 0;
+    }
+    .carousel-dot.active {
+      background: #2563eb;
+      transform: scale(1.2);
+    }
+    .carousel-dot:hover {
+      background: #94a3b8;
+    }
+    .carousel-dot.active:hover {
+      background: #2563eb;
+    }
+
+    /* Carousel Arrows */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      color: #1e293b;
+      font-size: 1.1rem;
+    }
+    .carousel-arrow:hover {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+    }
+    .carousel-arrow.prev {
+      left: -12px;
+    }
+    .carousel-arrow.next {
+      right: -12px;
+    }
+
+    .carousel-arrow:disabled {
+      opacity: 0.3;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* ================================================ */
+    /* END NEW SECTION                                  */
+    /* ================================================ */
+
     .capability-card {
       background: #f8fafc;
       padding: 1.8rem;
@@ -417,52 +603,32 @@
       background: #10b981;
     }
 
-    .catalogue-section {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-      border-radius: 2rem;
-      padding: 3rem 2rem;
-      text-align: center;
-      color: white;
-      margin-top: 3rem;
-    }
-    .catalogue-section h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .catalogue-section h2 span {
-      color: #60a5fa;
-    }
-    .catalogue-section p {
-      color: #cbd5e1;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.7;
-    }
-    .catalogue-section .btn-download {
-      background: #10b981;
-      color: white;
-      padding: 0.8rem 2.5rem;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      transition: 0.2s;
-    }
-    .catalogue-section .btn-download:hover {
-      background: #059669;
-      transform: translateY(-2px);
-    }
-
     .industries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .industry-card { background: #f8fafc; border-radius: 1rem; padding: 1.5rem; transition: 0.3s; border: 1px solid #e2e8f0; }
     .industry-card:hover { background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transform: translateY(-4px); }
     .industry-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
     .industry-description { font-style: italic; color: #475569; line-height: 1.6; margin-bottom: 1rem; font-size: 0.9rem; }
 
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .gallery-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+      gap: 1rem; 
+      margin-top: 2rem; 
+      align-items: start;
+    }
+    .gallery-grid h3 {
+      grid-column: 1 / -1;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0.5rem 0 0.2rem 0;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 0.3rem;
+    }
+    .gallery-grid h3 i {
+      margin-right: 0.5rem;
+      color: #2563eb;
+    }
 
     .lightbox {
         display: none;
@@ -623,13 +789,6 @@
       z-index: 0;
     }
 
-    .fp-iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      display: block;
-    }
-
     #reviewMessage {
       margin-top: 1rem;
       text-align: center;
@@ -741,6 +900,20 @@
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 1.5rem !important;
       }
+      .carousel-slide {
+        flex: 0 0 50%;
+      }
+      .carousel-arrow.prev {
+        left: 4px;
+      }
+      .carousel-arrow.next {
+        right: 4px;
+      }
+      .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+      }
     }
 
     @media (max-width: 991px) {
@@ -784,9 +957,6 @@
         height: 50px !important;
         font-size: 1.2rem !important;
       }
-      .fp-iframe {
-        height: 400px !important;
-      }
       .seritoclox-logo-container {
         padding: 0.6rem 1rem 0.6rem 0.8rem !important;
         max-width: 260px !important;
@@ -797,6 +967,26 @@
       }
       .seritoclox-logo-container .brand-name {
         font-size: 0.85rem !important;
+      }
+      .gallery-grid h3 {
+        font-size: 0.95rem !important;
+      }
+      .carousel-slide {
+        flex: 0 0 50%;
+      }
+      .carousel-arrow.prev {
+        left: 4px;
+      }
+      .carousel-arrow.next {
+        right: 4px;
+      }
+      .carousel-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
+      }
+      .supply-categories-section .section-heading {
+        font-size: 1.6rem;
       }
     }
 
@@ -955,22 +1145,6 @@
       .review-text {
         font-size: 0.8rem !important;
       }
-      .catalogue-section {
-        padding: 2rem 1rem !important;
-      }
-      .catalogue-section h2 {
-        font-size: 1.3rem !important;
-      }
-      .catalogue-section p {
-        font-size: 0.85rem !important;
-      }
-      .catalogue-section .btn-download {
-        padding: 0.5rem 1rem !important;
-        font-size: 0.8rem !important;
-      }
-      .fp-iframe {
-        height: 300px !important;
-      }
       .side-menu {
         width: 85% !important;
         right: -85% !important;
@@ -1052,6 +1226,35 @@
       .seritoclox-logo-container .trading-division {
         font-size: 0.45rem !important;
       }
+      .gallery-grid h3 {
+        font-size: 0.85rem !important;
+        margin: 0.3rem 0 0.1rem 0 !important;
+      }
+      .carousel-slide {
+        flex: 0 0 100%;
+      }
+      .carousel-arrow {
+        display: none;
+      }
+      .supply-categories-section .section-heading {
+        font-size: 1.3rem;
+      }
+      .supply-categories-section .section-description {
+        font-size: 0.85rem;
+        padding: 0 0.5rem;
+      }
+      .category-card .category-content {
+        padding: 1rem 1rem 1.3rem;
+      }
+      .category-card .category-content h3 {
+        font-size: 1rem;
+      }
+      .category-card .category-content p {
+        font-size: 0.75rem;
+      }
+      .supply-categories-section {
+        padding: 2rem 0;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1079,9 +1282,6 @@
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.4rem !important;
-      }
-      .fp-iframe {
-        height: 250px !important;
       }
       .section-title {
         font-size: 1.2rem !important;
@@ -1165,11 +1365,11 @@
       <li><a onclick="showPage('home'); closeMenu();"><i class="fas fa-home"></i> Home</a></li>
       <li><a onclick="showPage('whatwedo'); closeMenu();"><i class="fas fa-concierge-bell"></i> What We Do</a></li>
       <li><a onclick="showPage('howwework'); closeMenu();"><i class="fas fa-cogs"></i> How We Work</a></li>
-      <li><a onclick="showPage('gallery'); closeMenu();"><i class="fas fa-/images"></i> Gallery</a></li>
+      <li><a onclick="showPage('gallery'); closeMenu();"><i class="fas fa-images"></i> Gallery</a></li>
     </ul>
     <div class="side-footer">
       <div class="contact-info"><i class="fas fa-phone"></i> 078 490 8745</div>
-      <div class="contact-info"><i class="fas fa-envelope"></i> tinamarksourcing@yahoo.com</div>
+      <div class="contact-info"><i class="fas fa-envelope"></i> procurementintel@mytinamark.ac.za</div>
       <div style="margin-top: 1rem; font-size: 0.7rem; color: #475569;">© 2026 Tinamark (Pty) Ltd</div>
     </div>
   </div>
@@ -1227,19 +1427,131 @@
         </div>
       </div>
 
-      <!-- AREAS OF EXPERTISE (Now showing What We Do services from screenshot 2) -->
+      <!-- ================================================ -->
+      <!-- NEW: SUPPLY CATEGORIES SECTION                   -->
+      <!-- ================================================ -->
+      <section class="supply-categories-section" aria-label="Supply Categories">
+        <div class="container">
+          <p class="section-label">What We Supply</p>
+          <h2 class="section-heading">Our <span>Supply Categories</span></h2>
+          <p class="section-description">
+            Tinamark is a trusted supplier across multiple industries, delivering quality products from PPE and engineering supplies to office furniture and medical disposables.
+          </p>
+
+          <div class="carousel-wrapper">
+            <button class="carousel-arrow prev" aria-label="Previous slide">&larr;</button>
+            <button class="carousel-arrow next" aria-label="Next slide">&rarr;</button>
+
+            <div class="carousel-track" id="carouselTrack">
+              <!-- Slide 1: Industrial PPE & Workwear -->
+              <div class="carousel-slide">
+                <div class="category-card">
+                  <div class="category-image">
+                    <img src="images/TinaMark30.jpeg" alt="Industrial PPE and workwear including safety helmets, protective clothing, safety boots, gloves, and reflective workwear" loading="lazy">
+                  </div>
+                  <div class="category-content">
+                    <h3>Industrial <span>PPE &amp; Workwear</span></h3>
+                    <p>Safety helmets, protective clothing, safety boots, gloves, reflective workwear, and high-visibility gear for workplace safety.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: Industrial & Engineering -->
+              <div class="carousel-slide">
+                <div class="category-card">
+                  <div class="category-image">
+                    <img src="images/TinaMark15.jpeg" alt="Industrial equipment and engineering supplies including tools, machinery, and components" loading="lazy">
+                  </div>
+                  <div class="category-content">
+                    <h3>Industrial <span>&amp; Engineering</span></h3>
+                    <p>Industrial equipment, engineering tools, machinery, components, and workshop consumables for manufacturing and production.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Office Furniture & Stationery -->
+              <div class="carousel-slide">
+                <div class="category-card">
+                  <div class="category-image">
+                    <img src="images/TinaMark26.jpeg" alt="Office furniture and stationery including desks, chairs, filing cabinets, and office supplies" loading="lazy">
+                  </div>
+                  <div class="category-content">
+                    <h3>Office <span>Furniture &amp; Stationery</span></h3>
+                    <p>Office desks, chairs, filing cabinets, stationery, and essential office supplies for a productive workplace.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Operational Supplies -->
+              <div class="carousel-slide">
+                <div class="category-card">
+                  <div class="category-image">
+                    <img src="images/TinaMark14.jpeg" alt="Operational supplies and general business equipment for daily operations" loading="lazy">
+                  </div>
+                  <div class="category-content">
+                    <h3>Operational <span>Supplies</span></h3>
+                    <p>General business supplies, operational equipment, and everyday essentials to keep your organisation running smoothly.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5: Cleaning & Hygiene -->
+              <div class="carousel-slide">
+                <div class="category-card">
+                  <div class="category-image">
+                    <img src="images/TinaMark20.jpeg" alt="Cleaning and hygiene products including cleaning equipment and sanitation supplies" loading="lazy">
+                  </div>
+                  <div class="category-content">
+                    <h3>Cleaning <span>&amp; Hygiene</span></h3>
+                    <p>Cleaning equipment, hygiene products, sanitation supplies, and janitorial solutions for facility maintenance.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 6: Medical & Surgical Disposables -->
+              <div class="carousel-slide">
+                <div class="category-card">
+                  <div class="category-image">
+                    <img src="images/TinaMark13.jpeg" alt="Medical and surgical disposables including gloves, masks, surgical gowns, and medical consumables" loading="lazy">
+                  </div>
+                  <div class="category-content">
+                    <h3>Medical <span>&amp; Surgical Disposables</span></h3>
+                    <p>Medical gloves, masks, surgical gowns, medical consumables, and healthcare disposables for clinical and surgical environments.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carousel Dots -->
+            <div class="carousel-dots" id="carouselDots">
+              <button class="carousel-dot active" data-index="0" aria-label="Go to slide 1"></button>
+              <button class="carousel-dot" data-index="1" aria-label="Go to slide 2"></button>
+              <button class="carousel-dot" data-index="2" aria-label="Go to slide 3"></button>
+              <button class="carousel-dot" data-index="3" aria-label="Go to slide 4"></button>
+              <button class="carousel-dot" data-index="4" aria-label="Go to slide 5"></button>
+              <button class="carousel-dot" data-index="5" aria-label="Go to slide 6"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================ -->
+      <!-- END NEW SECTION                                  -->
+      <!-- ================================================ -->
+
+      <!-- AREAS OF EXPERTISE (6 Cards) -->
       <div id="areasOfExpertise" class="container section">
         <h2 class="section-title">Areas of <span>Expertise</span></h2>
         <div class="grid-3">
           <div class="card" onclick="openExpertiseModal('sourcing')" style="cursor: pointer;">
             <div class="picture-slot"><img src="images/TinaMark66.png" alt="Procurement & Sourcing"></div>
             <h3>PROCUREMENT &amp; SOURCING</h3>
-            <p>Can’t find the product you need? Tell us what you’re looking for. We source from verified suppliers and manage the procurement process</p>
+            <p>Can't find the product you need? Tell us what you're looking for. We source from verified suppliers and manage the procurement process</p>
           </div>
           <div class="card" onclick="openExpertiseModal('urgent')" style="cursor: pointer;">
             <div class="picture-slot"><img src="images/TinaMark67.png" alt="Urgent Supply Request"></div>
             <h3>URGENT SUPPLY REQUEST</h3>
-            <p>Time-critical requirement? Tell us what you need and when you need it. We’ll assess availability and turnaround.</p>
+            <p>Time-critical requirement? Tell us what you need and when you need it. We'll assess availability and turnaround.</p>
           </div>
           <div class="card" onclick="openExpertiseModal('bulk')" style="cursor: pointer;">
             <div class="picture-slot"><img src="images/TinaMark68.png" alt="Bulk Supply"></div>
@@ -1256,11 +1568,6 @@
             <h3>SUPPLIER NEGOTIATION</h3>
             <p>Complete pricing through strong supplier negotiation.</p>
           </div>
-          <div class="card" onclick="openExpertiseModal('recruiting')" style="cursor: pointer;">
-            <div class="picture-slot"><img src="images/TinaMark71.png" alt="Recruiting Supply Support"></div>
-            <h3>RECRUITING SUPPLY SUPPORT</h3>
-            <p>Regional network database for sourcing needs.</p>
-          </div>
           <div class="card" onclick="openExpertiseModal('project')" style="cursor: pointer;">
             <div class="picture-slot"><img src="images/TinaMark72.png" alt="Project Based Procurement"></div>
             <h3>PROJECT BASED PROCUREMENT</h3>
@@ -1269,7 +1576,7 @@
         </div>
       </div>
 
-      <!-- SERITOCLOX LOGO - Bottom right of home page -->
+      <!-- SERITOCLOX LOGO -->
       <div class="container seritoclox-section">
         <div class="seritoclox-logo-container">
           <div class="logo-slot">
@@ -1480,19 +1787,15 @@
         </div>
       </div>
 
-      <!-- REVIEWS SECTION - GOOGLE SHEETS INTEGRATION -->
+      <!-- REVIEWS SECTION -->
       <div class="container section">
         <h2 class="section-title">Client <span>Reviews & Feedback</span></h2>
         <div class="reviews-container">
-          
-          <!-- REVIEW FORM -->
           <div class="review-form">
             <h3>Leave a Review</h3>
             <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">
               Your feedback helps us serve you better. All reviews are public and help other clients make informed decisions.
             </p>
-            
-            <!-- Google Form Button -->
             <div style="text-align: center; margin: 1rem 0;">
               <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-YUcfZTAELk5cO7U9EEODfTaRwk_zzczg_KnrTD5DMCS00g/viewform?usp=header" target="_blank" class="btn-primary" style="background: #f5b042; border-color: #f5b042;">
                 <i class="fas fa-star"></i> Leave a Review on Google Form
@@ -1502,14 +1805,10 @@
               </p>
             </div>
           </div>
-
-          <!-- REVIEWS DISPLAY -->
           <div id="reviewsList">
             <h3>What Our Clients Say</h3>
             <div id="noReviews" style="text-align: center; padding: 2rem; color: #64748b;">Loading reviews...</div>
           </div>
-          
-          <!-- Loading indicator -->
           <div id="reviewsLoading" style="text-align: center; padding: 1rem; color: #64748b; display: none;">
             <i class="fas fa-spinner fa-spin"></i> Loading reviews from Google Sheets...
           </div>
@@ -1517,15 +1816,13 @@
       </div>
     </div>
 
-    <!-- WHAT WE DO PAGE (Now showing original Areas of Expertise from screenshot 1) -->
+    <!-- WHAT WE DO PAGE -->
     <div id="whatwedo" class="page">
       <div class="container section">
         <h2 class="section-title">What We <span>Do</span></h2>
         <p class="section-subtitle">From sourcing to delivery, we handle your procurement needs from start to finish across all industries.</p>
-
         <h3 style="font-size: 1.5rem; font-weight: 700; color: #0f172a; text-align: center; margin-bottom: 1rem;">Our Services</h3>
         <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">We make procurement simple, efficient and stress free.</p>
-
         <div class="grid-3">
           <div class="card">
             <div class="picture-slot"><img src="images/TinaMark50.png" alt="PPE & Workwear"></div>
@@ -1558,14 +1855,11 @@
             <p>Quality supplies for healthcare environments</p>
           </div>
         </div>
-
         <div class="section-divider">
           <span>✦ Industries We Serve ✦</span>
         </div>
-
         <h3 style="font-size: 1.5rem; font-weight: 700; color: #0f172a; text-align: center; margin-bottom: 0.5rem;">Industries We Serve</h3>
         <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">Tinamark provides tailored procurement and supply solutions across a wide range of industries.</p>
-
         <div class="industries-grid">
           <div class="industry-card">
             <div class="industry-picture-slot"><img src="images/TinaMark56.png" alt="Mining & Industrial"></div>
@@ -1635,7 +1929,6 @@
       <div class="container section">
         <h2 class="section-title">How We <span>Work</span></h2>
         <p class="section-subtitle">We make procurement simple, efficient and stress free. Here's how we do it.</p>
-
         <div class="process-step">
           <div class="step-number">1</div>
           <div class="step-content">
@@ -1645,7 +1938,6 @@
             <div class="why"><i class="fas fa-check-circle"></i> Why it matters: We take the time to understand exactly what you need so we can find the right solution.</div>
           </div>
         </div>
-
         <div class="process-step">
           <div class="step-number">2</div>
           <div class="step-content">
@@ -1655,7 +1947,6 @@
             <div class="why"><i class="fas fa-check-circle"></i> Why it matters: Our network saves you hours of searching and calling around.</div>
           </div>
         </div>
-
         <div class="process-step">
           <div class="step-number">3</div>
           <div class="step-content">
@@ -1665,7 +1956,6 @@
             <div class="why"><i class="fas fa-check-circle"></i> Why it matters: We get you the best deal so you don't have to negotiate.</div>
           </div>
         </div>
-
         <div class="process-step">
           <div class="step-number">4</div>
           <div class="step-content">
@@ -1675,7 +1965,6 @@
             <div class="why"><i class="fas fa-check-circle"></i> Why it matters: You get what you need, when you need it.</div>
           </div>
         </div>
-
         <div class="process-step">
           <div class="step-number">5</div>
           <div class="step-content">
@@ -1685,33 +1974,10 @@
             <div class="why"><i class="fas fa-check-circle"></i> Why it matters: Your success is our success. We're in this together.</div>
           </div>
         </div>
-
         <div style="text-align: center; margin-top: 3rem; font-size: 2rem; font-weight: 800; color: #2563eb; letter-spacing: 3px;">
           WITH EASE
         </div>
         <p style="text-align: center; color: #64748b; margin-top: 0.5rem;">We make procurement simple, efficient, and stress free.</p>
-
-        <div class="catalogue-section">
-          <h2>Our Service <span>Catalogue</span></h2>
-          <p>Browse through our service catalogue to see the full range of products and services we can source for your business. Click the arrows to flip through the pages.</p>
-          
-          <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15); background: #f1f5f9;">
-            <iframe 
-              allowfullscreen="allowfullscreen" 
-              allow="autoplay; fullscreen; clipboard-write" 
-              scrolling="no" 
-              class="fp-iframe" 
-              src="https://heyzine.com/flip-book/e49866fe87.html" 
-              style="border: none; width: 100%; height: 500px; display: block;">
-            </iframe>
-          </div>
-          
-          <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;">
-            <a href="https://heyzine.com/flip-book/e49866fe87.html" target="_blank" class="btn-download">
-              <i class="fas fa-expand"></i> View Full Screen
-            </a>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -1724,6 +1990,9 @@
         <p class="section-subtitle">From PPE and medical supplies to industrial equipment and office essentials — here are just a few of the products we've helped our clients find. Whatever you need, we'll track it down for you.</p>
         
         <div class="gallery-grid">
+
+          <!-- CATEGORY: PPE & SAFETY (1–9) -->
+          <h3><i class="fas fa-hard-hat"></i> PPE &amp; Safety Equipment</h3>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark1.jpeg')"><img src="images/TinaMark1.jpeg" alt="Product 1"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark2.jpeg')"><img src="images/TinaMark2.jpeg" alt="Product 2"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark3.jpeg')"><img src="images/TinaMark3.jpeg" alt="Product 3"></div>
@@ -1733,6 +2002,9 @@
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark7.jpeg')"><img src="images/TinaMark7.jpeg" alt="Product 7"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark8.jpeg')"><img src="images/TinaMark8.jpeg" alt="Product 8"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark9.jpeg')"><img src="images/TinaMark9.jpeg" alt="Product 9"></div>
+
+          <!-- CATEGORY: MEDICAL & DISPOSABLES (10–22) -->
+          <h3><i class="fas fa-heartbeat"></i> Medical &amp; Disposable Supplies</h3>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark12.jpeg')"><img src="images/TinaMark12.jpeg" alt="Product 10"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark13.jpeg')"><img src="images/TinaMark13.jpeg" alt="Product 11"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark14.jpeg')"><img src="images/TinaMark14.jpeg" alt="Product 12"></div>
@@ -1744,6 +2016,9 @@
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark20.jpeg')"><img src="images/TinaMark20.jpeg" alt="Product 18"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark23.jpeg')"><img src="images/TinaMark23.jpeg" alt="Product 19"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark24.jpeg')"><img src="images/TinaMark24.jpeg" alt="Product 20"></div>
+
+          <!-- CATEGORY: INDUSTRIAL & ENGINEERING (23–30) -->
+          <h3><i class="fas fa-industry"></i> Industrial &amp; Engineering Supplies</h3>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark25.jpeg')"><img src="images/TinaMark25.jpeg" alt="Product 21"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark26.jpeg')"><img src="images/TinaMark26.jpeg" alt="Product 22"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark27.jpeg')"><img src="images/TinaMark27.jpeg" alt="Product 23"></div>
@@ -1752,6 +2027,9 @@
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark30.jpeg')"><img src="images/TinaMark30.jpeg" alt="Product 26"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark31.jpeg')"><img src="images/TinaMark31.jpeg" alt="Product 27"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark32.jpeg')"><img src="images/TinaMark32.jpeg" alt="Product 28"></div>
+
+          <!-- CATEGORY: OFFICE & FURNITURE (33–44) -->
+          <h3><i class="fas fa-chair"></i> Office &amp; Furniture Equipment</h3>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark33.jpeg')"><img src="images/TinaMark33.jpeg" alt="Product 29"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark35.jpeg')"><img src="images/TinaMark35.jpeg" alt="Product 31"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark36.jpeg')"><img src="images/TinaMark36.jpeg" alt="Product 32"></div>
@@ -1764,6 +2042,9 @@
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark43.jpeg')"><img src="images/TinaMark43.jpeg" alt="Product 39"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark44.jpeg')"><img src="images/TinaMark44.jpeg" alt="Product 40"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark73.jpeg')"><img src="images/TinaMark73.jpeg" alt="Product 41"></div>
+
+          <!-- CATEGORY: CLEANING & HYGIENE (42–50) -->
+          <h3><i class="fas fa-broom"></i> Cleaning &amp; Hygiene Products</h3>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark74.jpeg')"><img src="images/TinaMark74.jpeg" alt="Product 42"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark75.jpeg')"><img src="images/TinaMark75.jpeg" alt="Product 43"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark76.jpeg')"><img src="images/TinaMark76.jpeg" alt="Product 44"></div>
@@ -1773,6 +2054,7 @@
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark80.jpeg')"><img src="images/TinaMark80.jpeg" alt="Product 48"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark81.jpeg')"><img src="images/TinaMark81.jpeg" alt="Product 49"></div>
           <div class="gallery-slot" onclick="openLightbox('images/TinaMark82.jpeg')"><img src="images/TinaMark82.jpeg" alt="Product 50"></div>
+
         </div>
       </div>
     </div>
@@ -1796,9 +2078,9 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© 2026 SERITOCLOX  (Pty) Ltd – Keeping Your Operations Covered</p>
-      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Trading as: Tinamark </p>
-      <p style="margin-top: 0.8rem; font-size: 0.7rem; color: #64748b;">Website designed by <strong>Kgang/Khang.Freelancing</strong> </p>
+      <p>© 2026 SERITOCLOX (Pty) Ltd – Keeping Your Operations Covered</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Trading as: Tinamark</p>
+      <p style="margin-top: 0.8rem; font-size: 0.7rem; color: #64748b;">Website designed by <strong>Kgang/Khang.Freelancing</strong></p>
     </div>
   </footer>
 
@@ -1826,6 +2108,140 @@
       overlay.classList.remove('active');
       hamburger.classList.remove('active');
     }
+
+    // ================================================
+    // NEW: CAROUSEL FUNCTIONALITY
+    // ================================================
+    (function() {
+      const track = document.getElementById('carouselTrack');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const prevBtn = document.querySelector('.carousel-arrow.prev');
+      const nextBtn = document.querySelector('.carousel-arrow.next');
+      const slides = track.querySelectorAll('.carousel-slide');
+      let currentIndex = 0;
+      let totalSlides = slides.length;
+      let autoPlayInterval = null;
+      let isTransitioning = false;
+
+      function getVisibleSlides() {
+        if (window.innerWidth < 768) return 1;
+        if (window.innerWidth < 1200) return 2;
+        return 3;
+      }
+
+      function getSlideWidth() {
+        return slides[0].offsetWidth + parseFloat(getComputedStyle(slides[0]).paddingLeft) + parseFloat(getComputedStyle(slides[0]).paddingRight);
+      }
+
+      function updateCarousel(animate = true) {
+        const visible = getVisibleSlides();
+        const maxIndex = Math.max(0, totalSlides - visible);
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        const offset = -currentIndex * (100 / visible);
+        track.style.transition = animate ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+        track.style.transform = `translateX(${offset}%)`;
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+        });
+
+        if (prevBtn && nextBtn) {
+          prevBtn.disabled = currentIndex === 0;
+          nextBtn.disabled = currentIndex >= maxIndex;
+        }
+      }
+
+      function goToSlide(index, animate = true) {
+        if (isTransitioning) return;
+        const visible = getVisibleSlides();
+        const maxIndex = Math.max(0, totalSlides - visible);
+        const targetIndex = Math.max(0, Math.min(index, maxIndex));
+        if (targetIndex === currentIndex) return;
+        currentIndex = targetIndex;
+        isTransitioning = true;
+        updateCarousel(animate);
+        setTimeout(() => { isTransitioning = false; }, 900);
+        resetAutoPlay();
+      }
+
+      function nextSlide() {
+        const visible = getVisibleSlides();
+        const maxIndex = Math.max(0, totalSlides - visible);
+        if (currentIndex < maxIndex) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(0);
+        }
+      }
+
+      function prevSlide() {
+        if (currentIndex > 0) {
+          goToSlide(currentIndex - 1);
+        } else {
+          const visible = getVisibleSlides();
+          const maxIndex = Math.max(0, totalSlides - visible);
+          goToSlide(maxIndex);
+        }
+      }
+
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, 5000);
+      }
+
+      function stopAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+          autoPlayInterval = null;
+        }
+      }
+
+      function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+      }
+
+      // Event Listeners
+      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          goToSlide(index);
+        });
+      });
+
+      // Pause on hover
+      const wrapper = document.querySelector('.carousel-wrapper');
+      if (wrapper) {
+        wrapper.addEventListener('mouseenter', stopAutoPlay);
+        wrapper.addEventListener('mouseleave', startAutoPlay);
+      }
+
+      // Handle resize
+      let resizeTimeout;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          const visible = getVisibleSlides();
+          const maxIndex = Math.max(0, totalSlides - visible);
+          if (currentIndex > maxIndex) {
+            currentIndex = maxIndex;
+          }
+          updateCarousel(false);
+        }, 200);
+      });
+
+      // Initialize
+      setTimeout(function() {
+        updateCarousel(false);
+        startAutoPlay();
+      }, 300);
+    })();
+
+    // ================================================
+    // END NEW CAROUSEL CODE
+    // ================================================
 
     const expertiseData = {
       sourcing: {
@@ -1897,20 +2313,6 @@
           'Long-term agreements',
           'Supplier relationship management',
           'Cost optimization'
-        ]
-      },
-      recruiting: {
-        icon: 'fa-network-wired',
-        title: 'Recruiting Supply Support',
-        subtitle: 'Regional network database for sourcing needs',
-        description: 'Our extensive regional network database gives us access to a wide range of suppliers. We use our connections to find the best sourcing solutions for your unique needs.',
-        items: [
-          'Supplier database access',
-          'Regional sourcing networks',
-          'Vendor identification',
-          'Supply chain connections',
-          'Local and international sourcing',
-          'Network optimization'
         ]
       },
       project: {
